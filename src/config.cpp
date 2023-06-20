@@ -78,7 +78,7 @@ bool CConfig::Parse_Settings(const char *str, const char *value)
 void Print_Settings()
 {
 	static const char *szConditon[] = {
-		" (not for any of the teams)"
+		" (not for any of the teams)",
 		" (for all)",
 		" (only Terrorists)",
 		" (only Counter-Terrorists)",
