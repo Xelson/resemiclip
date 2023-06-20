@@ -285,7 +285,8 @@ inline bool allowDontSolid(playermove_t *pm, edict_t *pHost, int host, int j)
 	int entTeamId = EntPlayer->m_iTeam;
 
 	*pPlayer->GetDiff(pObject) = GET_DISTANCE(hostOrigin, entOrigin);
-	*pPlayer->GetSolid(pObject) = (hostTeamId == 3
+	*pPlayer->GetSolid(pObject) = 	g_Config.GetTeam() != -1 && 
+									(hostTeamId == 3
 									|| ((g_Config.GetEffects()
 									|| *pPlayer->GetDiff(pObject) < g_Config.GetDistance())
 									&& ((g_Config.GetTeam() == 0) ? 1
@@ -424,7 +425,7 @@ void PM_Move(playermove_t *pm, int server)
 			{
 				CBasePlayer *EntPlayer = (CBasePlayer *)CBaseEntity::Instance(pEntity);
 
-				if (!EntPlayer || !EntPlayer->IsPlayer()) {
+				if (!EntPlayer || !EntPlayer->IsPlayer() || g_Config.GetTeam() == -1) {
 					continue;
 				}
 

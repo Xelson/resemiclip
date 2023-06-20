@@ -62,7 +62,7 @@ bool CConfig::Parse_Settings(const char *str, const char *value)
 		cfg_effects = clamp(i, 0, 1);
 	}
 	else if (!strcasecmp(str, "team")) {
-		cfg_team = clamp(i, 0, 3);
+		cfg_team = clamp(i, -1, 3);
 	}
 	else if (!strcasecmp(str, "penetfire")) {
 		cfg_penetfire = clamp(i, 0, 1);
@@ -78,6 +78,7 @@ bool CConfig::Parse_Settings(const char *str, const char *value)
 void Print_Settings()
 {
 	static const char *szConditon[] = {
+		" (not for any of the teams)"
 		" (for all)",
 		" (only Terrorists)",
 		" (only Counter-Terrorists)",
@@ -86,7 +87,7 @@ void Print_Settings()
 
 	SEM_PRINT("\n\nusage: semiclip_option\n\n [command]	[value]   [description]\n");
 	SEM_PRINT(" semiclip	%d	- enable/disable semiclip", g_Config.GetEnable());
-	SEM_PRINT(" team		%d	- condition for teams %s", g_Config.GetTeam(), szConditon[ g_Config.GetTeam() ]);
+	SEM_PRINT(" team		%d	- condition for teams %s", g_Config.GetTeam(), szConditon[ g_Config.GetTeam() + 1 ]);
 	SEM_PRINT(" time		%0.0f	- how many time in seconds semiclip will work from the beginning of the round", g_Config.GetTime());
 	SEM_PRINT(" crouch		%d	- allows jump to crouching players when semiclip works", g_Config.GetCrouch());
 	SEM_PRINT(" distance	%0.0f	- at what distance player can have transparency and semiclip", g_Config.GetDistance());
