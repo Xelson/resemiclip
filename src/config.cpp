@@ -43,6 +43,8 @@ bool CConfig::Parse_Settings(const char *str, const char *value)
 	int i = atoi(value);
 	double f = atof(value);
 
+	SEM_PRINT("key = %s, value = %s (%d)", str, value, i);
+
 	if (!strcasecmp(str, "semiclip")) {
 		cfg_enable = clamp(i, 0, 1);
 	}
@@ -78,11 +80,11 @@ bool CConfig::Parse_Settings(const char *str, const char *value)
 void Print_Settings()
 {
 	static const char *szConditon[] = {
-		" (not for any of the teams)",
-		" (for all)",
-		" (only Terrorists)",
-		" (only Counter-Terrorists)",
-		" (only teammates)"
+		"(not for any of the teams)",
+		"(for all)",
+		"(only Terrorists)",
+		"(only Counter-Terrorists)",
+		"(only teammates)"
 	};
 
 	SEM_PRINT("\n\nusage: semiclip_option\n\n [command]	[value]   [description]\n");
