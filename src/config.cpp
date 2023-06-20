@@ -43,8 +43,6 @@ bool CConfig::Parse_Settings(const char *str, const char *value)
 	int i = atoi(value);
 	double f = atof(value);
 
-	SEM_PRINT("key = %s, value = %s (%d)", str, value, i);
-
 	if (!strcasecmp(str, "semiclip")) {
 		cfg_enable = clamp(i, 0, 1);
 	}
